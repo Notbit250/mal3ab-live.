@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ملعب لايف</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
+<style>
+:root{--bg:#f4f1e8;--s1:#fff;--s2:#ece7d6;--tx:#16140f;--mu:#6d685a;--ln:#ddd6c2;--g:#a97a00;--gt:#fff;--live:#d92b2b;--ok:#1f8f55;--hero:#0a0d0b;--ht:#f5f2ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0b;--s1:#131315;--s2:#1c1c1f;--tx:#f5f2ea;--mu:#9a968a;--ln:#26262a;--g:#e6b94a;--gt:#1a1300;--live:#ff4545;--ok:#43d68a}}
+:root[data-theme="dark"]{--bg:#0a0a0b;--s1:#131315;--s2:#1c1c1f;--tx:#f5f2ea;--mu:#9a968a;--ln:#26262a;--g:#e6b94a;--gt:#1a1300;--live:#ff4545;--ok:#43d68a}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Tajawal,system-ui,Tahoma,sans-serif;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hero);z-index:30}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+#app{max-width:640px;margin:0 auto;padding-bottom:96px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hero);color:var(--ht);display:flex;align-items:center;gap:10px;padding:10px 16px}
+.lgo{width:40px;height:40px;border-radius:12px;border:1.5px solid #e6b94a;background:rgba(230,185,74,.12);display:grid;place-items:center}
+.lgo i{width:14px;height:14px;border:2.5px solid #e6b94a;border-radius:50%}
+.bn{flex:1}.bn b{display:block;font-size:19px;font-weight:800}.bn span{font-size:11px;color:#9a968a}
+.pill{border:1px solid #6d5a1f;color:#e6b94a;border-radius:20px;padding:4px 12px;font-size:12px;background:rgba(230,185,74,.08);display:flex;gap:6px;align-items:center}
+.av{width:38px;height:38px;border-radius:50%;border:1px solid #6d5a1f;color:#e6b94a;background:#111113;font-weight:800;font-size:16px;display:grid;place-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--live);animation:p 1.4s infinite;display:inline-block}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(255,69,69,.7)}100%{box-shadow:0 0 0 8px rgba(255,69,69,0)}}
+.strip{background:radial-gradient(ellipse 40% 90% at 15% 0,rgba(255,240,200,.3),transparent 70%),radial-gradient(ellipse 40% 90% at 85% 0,rgba(255,240,200,.25),transparent 70%),linear-gradient(#0d130f,#0a0a0b);color:var(--ht)}
+.days{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 8px}
+.d{flex:1 0 62px;padding:10px 4px 9px;text-align:center;color:#9a968a;border-bottom:3px solid transparent}
+.d span{display:block;font-size:12px}.d b{font-size:18px;font-weight:800}.d.on{color:#e6b94a;border-color:#e6b94a}
+.sps{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 14px 0}
+.sp{flex:0 0 auto;display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:14px;background:var(--s1);border:1px solid var(--ln);font-size:14px;color:var(--mu)}
+.sp.on{border-color:var(--g);color:var(--g);font-weight:700}
+.flt{display:flex;gap:8px;padding:12px 14px;overflow-x:auto;scrollbar-width:none}
+.f{flex:0 0 auto;padding:7px 16px;border-radius:20px;background:var(--s1);border:1px solid var(--ln);font-size:14px;color:var(--mu)}
+.f.on{background:var(--g);border-color:var(--g);color:var(--gt);font-weight:700}
+.comp{margin:0 12px 10px;background:var(--s1);border:1px solid var(--ln);border-radius:16px;overflow:hidden}
+.ch{width:100%;display:flex;align-items:center;gap:10px;padding:12px 14px;text-align:right}
+.ch .fl{width:26px;height:26px;border-radius:50%;background:var(--s2);display:grid;place-items:center;font-size:13px;color:var(--g);font-weight:800}
+.ch b{flex:1;font-size:15px}.ch small{color:var(--mu);font-size:12px;font-weight:400;margin-right:6px}
+.ch .cv{color:var(--mu);transition:transform .2s}.comp.cl .cv{transform:rotate(90deg)}.comp.cl .rows{display:none}
+.row{display:grid;grid-template-columns:56px 1fr 30px 30px;align-items:center;border-top:1px solid var(--ln);cursor:pointer}
+.row.lv{background:rgba(255,69,69,.06)}
+.stc{text-align:center;font-size:12px;color:var(--mu);line-height:1.5;padding:10px 0;border-left:1px solid var(--ln);align-self:stretch;display:grid;align-content:center}
+.stc.lv{color:var(--live);font-weight:700}
+.tms{padding:8px 12px;min-width:0}
+.tl{display:flex;align-items:center;gap:10px;height:30px;font-size:14px;font-weight:500}
+.tl i{font-style:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lg{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:12px;color:#fff;flex:0 0 auto;border:1.5px solid rgba(230,185,74,.55)}
+.lg.b{width:58px;height:58px;font-size:25px;margin:0 auto 6px}
+.scs{text-align:center;font-weight:800;font-size:16px}.scs div{height:30px;line-height:30px}.row.lv .scs{color:var(--live)}
+.star{font-size:20px;color:var(--mu);padding:8px 0;height:100%}.star.on{color:var(--g)}
+.empty{text-align:center;color:var(--mu);padding:46px 24px;line-height:1.9}
+.dis{margin:18px 20px 0;font-size:12px;color:var(--mu);line-height:1.8;text-align:center}
+.note{margin:12px 12px 0;border:1px solid var(--g);background:rgba(230,185,74,.07);border-radius:14px;padding:10px 14px;font-size:12.5px;line-height:1.8;color:var(--mu)}
+.note b{color:var(--tx)}
+.h2{font-size:22px;font-weight:800;margin:18px 16px 10px}
+.tw{overflow-x:auto}
+.tb{width:100%;border-collapse:collapse;font-size:13px}
+.tb th{color:var(--mu);font-weight:400;padding:10px 6px;font-size:12px}
+.tb td{padding:11px 6px;text-align:center;border-top:1px solid var(--ln)}
+.tb td:nth-child(2){text-align:right;font-weight:700;white-space:nowrap}
+.tb td:last-child{font-weight:800;color:var(--g);font-size:15px}
+.tb tr.up td:first-child{box-shadow:inset -3px 0 var(--g)}
+.ni{padding:16px;border-top:1px solid var(--ln)}.ni:first-child{border:0}
+.ni small{color:var(--g);font-weight:700;font-size:12px}.ni b{display:block;margin:4px 0;font-size:16px;line-height:1.6}.ni p{margin:0;color:var(--mu);font-size:13px;line-height:1.8}
+.in{display:block;width:calc(100% - 32px);margin:0 16px 12px;padding:14px 16px;border-radius:14px;border:1px solid var(--ln);background:var(--s1);color:var(--tx);font:inherit;font-size:16px;outline:none}
+.in:focus{border-color:var(--g)}textarea.in{min-height:120px;resize:vertical}
+.lb{display:block;margin:0 18px 6px;font-size:13px;color:var(--mu)}
+.btn{display:block;width:calc(100% - 32px);margin:6px 16px 10px;padding:14px;border-radius:14px;background:var(--g);color:var(--gt);font-weight:800;font-size:16px;text-align:center}
+.btn.o{background:none;border:1px solid var(--g);color:var(--g)}
+.msg{margin:0 16px 12px;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.7}
+.msg.e{background:rgba(255,69,69,.12);color:var(--live)}.msg.k{background:rgba(67,214,138,.12);color:var(--ok)}
+.seg{display:flex;margin:0 16px 16px;background:var(--s2);border-radius:14px;padding:4px}
+.seg button{flex:1;padding:10px;border-radius:11px;color:var(--mu);font-weight:700}.seg button.on{background:var(--g);color:var(--gt)}
+.li{display:flex;align-items:center;gap:12px;width:100%;padding:16px;border-top:1px solid var(--ln);text-align:right;font-size:16px}
+.li:first-child{border:0}.li b{flex:1;font-weight:500}.li span{color:var(--mu)}
+.abt{padding:16px;line-height:2;font-size:15px;color:var(--mu)}.abt h3{color:var(--tx);margin:12px 0 2px;font-size:17px}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:20;background:var(--s1);border-top:1px solid var(--ln);padding:6px 8px calc(env(safe-area-inset-bottom,0px) + 6px)}
+nav div{display:flex;max-width:640px;margin:0 auto}
+nav button{flex:1;color:var(--mu);font-size:11.5px;padding:6px 2px;display:grid;gap:2px;justify-items:center}
+nav button b{font-size:21px;font-weight:400}nav button.on{color:var(--g);font-weight:700}
+#sh{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center}
+#sh[hidden]{display:none}
+.sheet{width:100%;max-width:640px;height:86%;overflow:auto;background:var(--bg);border-radius:26px 26px 0 0;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 18px);animation:up .28s ease-out}
+@keyframes up{from{transform:translateY(40px);opacity:.4}}
+.shd{background:var(--hero);color:var(--ht);padding:20px 16px 0;border-radius:26px 26px 0 0;text-align:center;position:sticky;top:0;z-index:2}
+.shd .lab{font-size:13px;color:#e6b94a}
+.shd .r3{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:12px 0}
+.shd .big{font-size:42px;font-weight:800;color:#e6b94a;direction:ltr;line-height:1}
+.shd .mm{font-size:13px;color:#9a968a;margin-top:4px}.shd .mm.lv{color:#ff4545;font-weight:700}
+.tabs{display:flex;border-top:1px solid #26262a;overflow-x:auto;scrollbar-width:none}
+.tabs button{flex:1 0 auto;padding:12px 14px;color:#9a968a;font-size:14px;border-bottom:3px solid transparent}
+.tabs button.on{color:#e6b94a;border-color:#e6b94a;font-weight:700}
+.sec{margin:16px 16px 6px;font-weight:800;font-size:16px}
+.ev{display:grid;grid-template-columns:1fr 46px 1fr;align-items:center;margin:0 16px;padding:10px 0;border-bottom:1px solid var(--ln);font-size:14px}
+.ev em{font-style:normal;text-align:center;color:var(--mu);font-size:12px}.ev .r{text-align:left}
+.bar{margin:12px 16px}.bar p{display:flex;justify-content:space-between;margin:0 0 5px;font-size:13px}
+.bt{height:7px;border-radius:5px;background:var(--s2);display:flex;overflow:hidden;direction:ltr}.bt i{background:var(--g)}
+.lu{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 16px}
+.lu div{background:var(--s1);border:1px solid var(--ln);border-radius:14px;padding:6px 12px}
+.lu p{margin:0;padding:8px 0;border-bottom:1px solid var(--ln);font-size:13px;display:flex;gap:8px}.lu p:last-child{border:0}.lu p b{color:var(--g);min-width:20px}
+.inf{display:flex;justify-content:space-between;padding:13px 16px;border-top:1px solid var(--ln);font-size:14px}.inf:first-child{border:0}.inf span{color:var(--mu)}
+@media (prefers-reduced-motion:reduce){.dot,.sheet{animation:none}}
+</style>
+</head>
+<body>
+<div id="app">
+<header><div class="lgo"><i></i></div><div class="bn"><b>ملعب لايف</b><span>نتائج الرياضة بتوقيت الجزائر</span></div><div class="pill" id="lc"></div><button class="av" id="av" data-v="ac" aria-label="حسابي"></button></header>
+<div class="strip" id="strip"><div class="days" id="days"></div></div>
+<main id="main"></main>
+<p class="dis">الأوقات بتوقيت الجزائر. © ملعب لايف<br>تصميم <b dir="ltr" style="color:var(--g);letter-spacing:.5px">hani douffa</b></p>
+</div>
+<nav><div id="nav"></div></nav>
+<div id="sh" hidden></div>
+<script>
+const $=id=>document.getElementById(id);
+const J=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}};
+const W=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const SP=[['كرة القدم','⚽'],['كرة السلة','🏀'],['كرة اليد','🤾'],['التنس','🎾'],['الكرة الطائرة','🏐']];
+const TEAMS=["نسور الجنوب","أسود الأطلس","فرسان الميناء","صقور الهضبة","رياح الشرق","ذئاب الجبل","نجوم الساحل","أمواج الغرب","حراس الواحة","عواصف الشمال","شهب الصحراء","بحارة الخليج"];
+const FN=["كريم","ياسين","سفيان","أمين","رشيد","وليد","زكرياء","نبيل","فارس","هشام","مراد","إلياس"],LN=["بوزيد","العمراني","مدور","الحداد","قاسمي","بن عيسى","لطرش","شايب","سعدي","منصوري","غرابي","بلال"];
+const PLN=FN.map((f,i)=>f+' '+LN[(i*5+3)%12]);
+const N=(s,i)=>s===3?PLN[i]:TEAMS[i];
+const LG=[{n:"الدوري الممتاز",c:"وطني",s:0,t:[0,1,2,3,4,5]},{n:"كأس الأبطال",c:"قاري",s:0,t:[6,7,8,9]},{n:"الدوري الوطني",c:"وطني",s:0,t:[2,5,10,11,0,7]},{n:"دوري الدرجة الثانية",c:"وطني",s:0,t:[1,3,8,9,11,4]},{n:"كأس الجمهورية",c:"وطني",s:0,t:[0,6,10,5]},
+{n:"دوري السلة الكبرى",c:"وطني",s:1,t:[0,2,4,6,8,10]},{n:"كأس السلة",c:"وطني",s:1,t:[1,3,5,7]},{n:"دوري اليد الممتاز",c:"وطني",s:2,t:[1,3,5,7,9,11]},{n:"بطولة الصحراء المفتوحة",c:"دولي",s:3,t:[0,1,2,3,4,5,6,7]},{n:"دوري الطائرة الممتاز",c:"وطني",s:4,t:[0,3,6,9,2,5]}];
+const NEWS=[["تحليل","قراءة في أداء نسور الجنوب هذا الموسم","خبر تجريبي لعرض شكل بطاقة الخبر."],["انتقالات","أسود الأطلس يعززون الخط الأمامي","نص تجريبي. تظهر هنا الأخبار الحقيقية بعد ربط مصدر الأخبار."],["جولة","ملخص الجولة العاشرة في الدوري الممتاز","نص تجريبي بعنوان وتصنيف ووصف قصير."]];
+const STD=["ملعب النصر الكبير","ملعب الواحة","ملعب الميناء","ملعب الهضبة","قاعة الأبطال","ملعب الشرق"];
+const rnd=s=>()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const hue=i=>`hsl(${(i*53+150)%360} 45% 32%)`;
+const logo=(s,i,c='')=>`<div class="lg ${c}" style="background:${hue(i)}">${N(s,i)[0]}</div>`;
+let view='m',day=0,flt='all',sp=0,tick=0,sel=null,stab='ev',cl=new Set,stl=0,am='in',fb='',ses=J('ms_s',null);
+const fk=()=>'ms_f'+(ses&&!ses.guest?'_'+ses.email:'');
+let favs=new Set(J(fk(),[]));
+const saveF=()=>W(fk(),[...favs]);
+function dayMatches(d){const o=[];LG.forEach((l,li)=>{const k=((d%3)+3)%3,r=l.t.slice(k).concat(l.t.slice(0,k));
+for(let i=0,n=0;i+1<r.length&&n<3;i+=2,n++){const g=rnd(d*977+li*131+n*17+5),s=(n+li)%3,mn=20+Math.floor(g()*60),R=l.s===1?()=>70+Math.floor(g()*40):l.s===2?()=>20+Math.floor(g()*15):l.s===0?()=>Math.floor(g()*3.4):()=>Math.floor(g()*4);
+o.push({id:d+'_'+li+'_'+n,d,li,sp:l.s,h:r[i],a:r[i+1],st:d<0?'FT':d>0?'NS':s===0?'FT':s===1?'LV':'NS',hr:[16,18,20,21][(n+li)%4],mn,sh:R(),sa:R()})}});return o}
+const allM=()=>{let a=[];for(let d=-3;d<=3;d++)a=a.concat(dayMatches(d));return a};
+const live=m=>Math.min(90,m.mn+tick);
+const dt=d=>{const x=new Date();x.setDate(x.getDate()+d);return x};
+const dl=d=>d===0?'اليوم':d===-1?'أمس':d===1?'غدًا':dt(d).toLocaleDateString('ar-DZ-u-nu-latn',{day:'numeric',month:'long'});
+const stT=m=>m.st==='LV'?(m.sp===0?`<span class="lm" data-b="${m.mn}">${live(m)}′</span>`:'مباشر'):m.st==='FT'?'انتهت':m.hr+':00';
+function row(m){return `<div class="row ${m.st==='LV'?'lv':''}" data-id="${m.id}"><div class="stc ${m.st==='LV'?'lv':''}">${stT(m)}</div><div class="tms"><div class="tl">${logo(m.sp,m.h)}<i>${N(m.sp,m.h)}</i></div><div class="tl">${logo(m.sp,m.a)}<i>${N(m.sp,m.a)}</i></div></div><div class="scs">${m.st==='NS'?'':`<div>${m.sh}</div><div>${m.sa}</div>`}</div><button class="star ${favs.has(m.id)?'on':''}" data-f="${m.id}" aria-label="مفضلة">${favs.has(m.id)?'★':'☆'}</button></div>`}
+const group=ms=>LG.map((l,li)=>{const L=ms.filter(m=>m.li===li);return L.length?`<section class="comp ${cl.has(li)?'cl':''}"><button class="ch" data-c="${li}"><span class="fl">${SP[l.s][1]}</span><b>${l.n}<small>${l.c}</small></b><span class="cv">▾</span></button><div class="rows">${L.map(row).join('')}</div></section>`:''}).join('');
+function table(li){const l=LG[li],g=rnd(li*7+3),rs=l.t.map(t=>{const w=Math.floor(g()*7),d=Math.floor(g()*(11-w)),lo=10-w-d,gf=w*2+d+Math.floor(g()*6),ga=lo*2+d+Math.floor(g()*4);return{t,w,d,lo,gf,ga,p:3*w+d}}).sort((a,b)=>b.p-a.p||(b.gf-b.ga)-(a.gf-a.ga));
+return `<div class="tw"><table class="tb"><tr><th>#</th><th>${l.s===3?'اللاعب':'الفريق'}</th><th>لعب</th><th>ف</th><th>ت</th><th>خ</th><th>نقاط</th></tr>`+rs.map((r,i)=>`<tr class="${i<2?'up':''}"><td>${i+1}</td><td>${N(l.s,r.t)}</td><td>10</td><td>${r.w}</td><td>${r.d}</td><td>${r.lo}</td><td>${r.p}</td></tr>`).join('')+`</table></div>`}
+const spBar=()=>`<div class="sps">${SP.map(([n,e],i)=>`<button class="sp ${i===sp?'on':''}" data-sp="${i}">${e} ${n}</button>`).join('')}</div>`;
+const cm=(msg,k)=>msg?`<div class="msg ${k}">${msg}</div>`:'';
+function render(){const isM=view==='m';$('strip').hidden=!isM;
+$('lc').innerHTML=`<i class="dot"></i>${dayMatches(0).filter(m=>m.st==='LV').length} مباشر`;
+$('av').textContent=ses&&!ses.guest?ses.name[0]:'👤';
+let h='';
+if(isM){$('days').innerHTML=[-3,-2,-1,0,1,2,3].map(d=>`<button class="d ${d===day?'on':''}" data-d="${d}"><span>${d===0?'اليوم':dt(d).toLocaleDateString('ar-DZ-u-nu-latn',{weekday:'short'})}</span><b>${dt(d).getDate()}</b></button>`).join('');
+const ms=dayMatches(day).filter(m=>LG[m.li].s===sp&&(flt==='all'||(flt==='live'&&m.st==='LV')||(flt==='fav'&&favs.has(m.id))));
+h=spBar()+`<div class="flt">${[['all','كل المباريات'],['live','مباشر'],['fav','مفضلتي']].map(([k,n])=>`<button class="f ${k===flt?'on':''}" data-fl="${k}">${n}</button>`).join('')}</div>`+(group(ms)||`<div class="empty">${flt==='live'?'لا توجد مباريات مباشرة الآن.':flt==='fav'?'اضغط على النجمة ☆ بجانب أي مباراة لتظهر هنا.':'لا توجد مباريات.'}</div>`)+`<div class="note"><b>عرض تجريبي.</b> الفرق والنتائج وهمية، وتُستبدل ببيانات حقيقية عند ربط مصدر رياضي.</div>`}
+else if(view==='t'){const ls=LG.map((l,i)=>i).filter(i=>LG[i].s===sp);if(!ls.includes(stl))stl=ls[0];
+h=spBar()+`<div class="flt">${ls.map(i=>`<button class="f ${i===stl?'on':''}" data-sl="${i}">${LG[i].n}</button>`).join('')}</div><div class="comp">${table(stl)}</div>`}
+else if(view==='n')h=`<div class="h2">آخر الأخبار</div><div class="comp">`+NEWS.map(([t,a,b])=>`<div class="ni"><small>${t}</small><b>${a}</b><p>${b}</p></div>`).join('')+`</div>`;
+else if(view==='s')h=`<div class="h2">البحث</div><input class="in" id="q" placeholder="ابحث عن فريق أو دوري..." autocomplete="off"><div id="qr"><div class="empty">اكتب اسم فريق أو دوري.</div></div>`;
+else if(view==='mo')h=`<div class="h2">المزيد</div><div class="comp">${[['ac','👤','حسابي'],['ab','ℹ️','من نحن'],['ct','✉️','تواصل معنا']].map(([k,e,n])=>`<button class="li" data-v="${k}"><span>${e}</span><b>${n}</b><span>‹</span></button>`).join('')}</div>`;
+else if(view==='ab')h=`<div class="h2">من نحن</div><div class="comp"><div class="abt"><h3>ملعب لايف</h3>منصة عربية لمتابعة نتائج المباريات بتوقيت الجزائر، تجمع كرة القدم وكرة السلة وكرة اليد والتنس والكرة الطائرة في مكان واحد.<h3>ماذا نقدم</h3>جدول مباريات يومي، نتائج مباشرة، ترتيب البطولات، وتفاصيل كل مباراة: الأحداث، الإحصائيات، التشكيلة والمعلومات.<h3>رؤيتنا</h3>تجربة سريعة وواضحة على الهاتف، بدون إزعاج، وباللغة العربية من اليمين لليسار.<h3>ملاحظة</h3>هذه نسخة تجريبية: الفرق والنتائج وهمية لعرض التصميم، وستُعرض المباريات الحقيقية بعد ربط مصدر بيانات رياضي رسمي.<h3>التصميم</h3>تصميم: <b dir="ltr" style="color:var(--g)">hani douffa</b></div></div>`;
+else if(view==='ct')h=`<div class="h2">تواصل معنا</div><label class="lb">الاسم</label><input class="in" id="cn" value="${ses&&!ses.guest?ses.name:''}"><label class="lb">البريد الإلكتروني</label><input class="in" id="ce" type="email" dir="ltr" value="${ses&&!ses.guest?ses.email:''}"><label class="lb">رسالتك</label><textarea class="in" id="cg"></textarea>${cm(fb,fb.startsWith('تم')?'k':'e')}<button class="btn" data-act="send">إرسال الرسالة</button><p class="dis">نسخة تجريبية: الرسالة تُحفظ على جهازك فقط ولا تصل لأحد حتى نربط الموقع ببريد أو خدمة استقبال.</p>`;
+else if(view==='ac'){if(ses)h=`<div class="h2">حسابي</div><div class="comp"><div class="inf"><span>الاسم</span><b>${ses.guest?'زائر':ses.name}</b></div><div class="inf"><span>البريد</span><b dir="ltr">${ses.guest?'—':ses.email}</b></div><div class="inf"><span>مبارياتي المفضلة</span><b>${favs.size}</b></div></div>${ses.guest?'<p class="dis">أنت تتصفح كزائر. أنشئ حسابًا لحفظ مفضلتك باسمك.</p><button class="btn" data-act="out">إنشاء حساب أو تسجيل الدخول</button>':'<button class="btn o" data-act="out">تسجيل الخروج</button>'}`;
+else h=`<div class="h2">حسابي</div><div class="seg"><button class="${am==='in'?'on':''}" data-am="in">تسجيل الدخول</button><button class="${am==='up'?'on':''}" data-am="up">حساب جديد</button></div>${am==='up'?'<label class="lb">الاسم</label><input class="in" id="an" autocomplete="name">':''}<label class="lb">البريد الإلكتروني</label><input class="in" id="ae" type="email" dir="ltr" autocomplete="email"><label class="lb">كلمة السر (6 أحرف على الأقل)</label><input class="in" id="ap" type="password" dir="ltr" autocomplete="${am==='up'?'new-password':'current-password'}">${cm(fb,'e')}<button class="btn" data-act="${am==='up'?'signup':'login'}">${am==='up'?'إنشاء الحساب':'دخول'}</button><button class="btn o" data-act="guest">الدخول كضيف</button><p class="dis">نسخة تجريبية: الحسابات تُحفظ على هذا الجهاز فقط. الحماية الكاملة لكلمات السر تتطلب سيرفر.</p>`}
+$('main').innerHTML=h;
+$('nav').innerHTML=[['m','المباريات','⚽'],['t','الترتيب','🏆'],['n','الأخبار','📰'],['s','البحث','⌕'],['mo','المزيد','☰']].map(([k,n,i])=>`<button class="${(k===view||(k==='mo'&&['ab','ct','ac'].includes(view)))?'on':''}" data-v="${k}"><b>${i}</b>${n}</button>`).join('');
+if(view==='s')$('q').oninput=e=>{const q=e.target.value.trim();if(!q){$('qr').innerHTML='<div class="empty">اكتب اسم فريق أو دوري.</div>';return}
+const ms=allM().filter(m=>N(m.sp,m.h).includes(q)||N(m.sp,m.a).includes(q)||LG[m.li].n.includes(q));$('qr').innerHTML=ms.length?group(ms):'<div class="empty">لا نتائج مطابقة.</div>'}}
+function sheet(){const m=allM().find(x=>x.id===sel);if(!m)return;const foot=m.sp===0;
+const g=rnd(m.d*31+m.h*7+m.a),ev=[];
+if(foot&&m.st!=='NS'){const mx=m.st==='LV'?live(m):90;for(let i=0;i<m.sh;i++)ev.push([1+Math.floor(g()*(mx-1)),0]);for(let i=0;i<m.sa;i++)ev.push([1+Math.floor(g()*(mx-1)),1]);ev.sort((a,b)=>a[0]-b[0])}
+const ph=40+Math.floor(g()*21),bars=foot?[['الاستحواذ',ph,100-ph,'%'],['التسديدات',4+Math.floor(g()*9),3+Math.floor(g()*8),''],['على المرمى',1+m.sh+Math.floor(g()*4),1+m.sa+Math.floor(g()*4),''],['الركنيات',Math.floor(g()*8),Math.floor(g()*8),'']]:[['التسديدات',10+Math.floor(g()*20),10+Math.floor(g()*20),''],['الأخطاء',3+Math.floor(g()*12),3+Math.floor(g()*12),''],['الإيقاف المؤقت',Math.floor(g()*5),Math.floor(g()*5),'']];
+const ns=m.st==='NS',T=(foot?[['ev','الأحداث'],['st','الإحصائيات'],['lu','التشكيلة'],['tb','الترتيب'],['in','المعلومات']]:[['st','الإحصائيات'],['tb','الترتيب'],['in','المعلومات']]);if(!T.some(x=>x[0]===stab))stab=T[0][0];let b='';
+if(stab==='ev')b=ns?'<div class="empty">ستظهر الأحداث بعد صافرة البداية.</div>':`<div class="sec">الأحداث</div>`+(ev.length?ev.map(([t,s])=>`<div class="ev"><span>${s===0?'⚽ '+TEAMS[m.h]:''}</span><em>${t}′</em><span class="r">${s===1?TEAMS[m.a]+' ⚽':''}</span></div>`).join(''):'<div class="empty" style="padding:14px">لا أهداف حتى الآن.</div>');
+else if(stab==='st')b=ns?'<div class="empty">الإحصائيات تظهر بعد بداية المباراة.</div>':bars.map(([n,a,c,u])=>`<div class="bar"><p><b>${a}${u}</b><span>${n}</span><b>${c}${u}</b></p><div class="bt"><i style="width:${a/(a+c||1)*100}%"></i></div></div>`).join('');
+else if(stab==='lu'){const sq=()=>Array.from({length:11},(_,i)=>`<p><b>${i+1}</b>${FN[Math.floor(g()*12)]} ${LN[Math.floor(g()*12)]}</p>`).join('');b=`<div class="sec">التشكيلة المتوقعة (تجريبية)</div><div class="lu"><div>${sq()}</div><div>${sq()}</div></div>`}
+else if(stab==='tb')b=`<div class="sec">${LG[m.li].n}</div><div class="comp" style="margin:0 12px">${table(m.li)}</div>`;
+else b=`<div class="sec">معلومات المباراة</div><div class="comp" style="margin:0 12px">${[['البطولة',LG[m.li].n],['الرياضة',SP[m.sp][0]],['التاريخ',dl(m.d)],['الوقت',m.hr+':00 بتوقيت الجزائر'],['المكان',STD[(m.h+m.a)%6]],['الحكم',FN[(m.h*3)%12]+' '+LN[(m.a*7)%12]],['الحضور',ns?'—':(8000+Math.floor(g()*30000)).toLocaleString('en')]].map(([k,v])=>`<div class="inf"><span>${k}</span><b>${v}</b></div>`).join('')}</div>`;
+$('sh').innerHTML=`<div class="sheet"><div class="shd"><div class="lab">${LG[m.li].n}</div><div class="r3"><div>${logo(m.sp,m.h,'b')}<b>${N(m.sp,m.h)}</b></div><div>${ns?`<div class="big" style="font-size:32px">${m.hr}:00</div>`:`<div class="big">${m.sh}:${m.sa}</div>`}<div class="mm ${m.st==='LV'?'lv':''}"><span ${m.st==='LV'&&foot?`class="lm" data-b="${m.mn}"`:''}>${m.st==='LV'?(foot?live(m)+'′':'مباشر'):m.st==='FT'?'انتهت':'لم تبدأ'}</span></div></div><div>${logo(m.sp,m.a,'b')}<b>${N(m.sp,m.a)}</b></div></div><div class="tabs">${T.map(([k,n])=>`<button class="${k===stab?'on':''}" data-st="${k}">${n}</button>`).join('')}</div></div>${b}</div>`;$('sh').hidden=false}
+async function hx(p,s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s+p));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+const setS=s=>{ses=s;W('ms_s',s);favs=new Set(J(fk(),[]));fb=''};
+async function act(a){const v=id=>($(id)?$(id).value.trim():''),em=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if(a==='guest'){setS({guest:1,name:'زائر'})}
+else if(a==='out'){setS(null)}
+else if(a==='signup'){const n=v('an'),e=v('ae').toLowerCase(),p=$('ap').value,U=J('ms_u',{});
+if(n.length<2)fb='اكتب اسمك.';else if(!em.test(e))fb='البريد الإلكتروني غير صحيح.';else if(p.length<6)fb='كلمة السر قصيرة: 6 أحرف على الأقل.';else if(U[e])fb='هذا البريد مسجل مسبقًا. جرّب تسجيل الدخول.';
+else{const s=Math.random().toString(36).slice(2);U[e]={n,s,h:await hx(p,s)};W('ms_u',U);setS({email:e,name:n})}}
+else if(a==='login'){const e=v('ae').toLowerCase(),p=$('ap').value,U=J('ms_u',{}),u=U[e];
+if(!u||u.h!==await hx(p,u.s))fb='البريد أو كلمة السر غير صحيحة.';else setS({email:e,name:u.n})}
+else if(a==='send'){const n=v('cn'),e=v('ce'),g=v('cg');
+if(n.length<2||!em.test(e)||g.length<5)fb='املأ الاسم والبريد الصحيح ورسالة من 5 أحرف على الأقل.';else{const M=J('ms_m',[]);M.push({n,e,g,t:Date.now()});W('ms_m',M);fb='تم حفظ رسالتك على جهازك (نسخة تجريبية، لم تُرسل لأحد).'}}
+render()}
+document.addEventListener('click',e=>{const q=s=>e.target.closest(s);let x;
+if(x=q('[data-act]')){act(x.dataset.act);return}
+if(x=q('[data-am]')){am=x.dataset.am;fb='';render();return}
+if(x=q('[data-f]')){const i=x.dataset.f;favs.has(i)?favs.delete(i):favs.add(i);saveF();render();return}
+if(x=q('[data-c]')){const i=+x.dataset.c;cl.has(i)?cl.delete(i):cl.add(i);render();return}
+if(x=q('[data-st]')){stab=x.dataset.st;sheet();return}
+if(x=q('[data-v]')){view=x.dataset.v;fb='';render();scrollTo(0,0);return}
+if(x=q('[data-d]')){day=+x.dataset.d;render();return}
+if(x=q('[data-sp]')){sp=+x.dataset.sp;render();return}
+if(x=q('[data-fl]')){flt=x.dataset.fl;render();return}
+if(x=q('[data-sl]')){stl=+x.dataset.sl;render();return}
+if(x=q('[data-id]')){sel=x.dataset.id;stab='ev';sheet();return}
+if(e.target.id==='sh')$('sh').hidden=true});
+setInterval(()=>{tick++;document.querySelectorAll('.lm').forEach(x=>x.textContent=Math.min(90,+x.dataset.b+tick)+'′')},4000);
+render();
+</script>
+</body>
+</html>
